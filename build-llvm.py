@@ -387,7 +387,15 @@ def parse_parameters(root_folder):
 
                                """),
                                action="store_true")
+    parser.add_argument("--additional-build-arguments",
+                        help=textwrap.dedent("""\
+                        You can add some more custom parameters for LLVM cmake. It will replace the default values,
+                        and affect the finnal stage only.
+                        To use this parameter, you must use \";\" as a separator between multiple arguments and also 
+                        parameter and value are needed to be connected by \"=\"
 
+                        """),
+                        type=str)
     return parser.parse_args()
 
 
@@ -984,13 +992,18 @@ def stage_specific_cmake_defines(args, dirs, stage):
             defines['LLVM_BUILD_RUNTIME'] = 'OFF'
             defines['LLVM_VP_COUNTERS_PER_SITE'] = '6'
 
-        # If we are at the final stage, use PGO/Thin LTO if requested
         if stage == get_final_stage(args):
+            # If we are at the final stage, use PGO/Thin LTO if requested
             if args.pgo:
                 defines['LLVM_PROFDATA_FILE'] = dirs.build_folder.joinpath(
                     "profdata.prof").as_posix()
             if args.lto:
                 defines['LLVM_ENABLE_LTO'] = args.lto.capitalize()
+            if args.additional_build_arguments:
+                params = args.additional_build_arguments.split(';')
+                for param in params:
+                    param = param.split('=')
+                    defines[param[0]] = param[1]
 
         # If the user did not specify CMAKE_C_FLAGS or CMAKE_CXX_FLAGS, add them as empty
         # to paste stage 2 to ensure there are no environment issues (since CFLAGS and CXXFLAGS
