@@ -754,7 +754,9 @@ def slim_cmake_defines():
         # Don't include documentation build targets because it is available on the web
         'LLVM_INCLUDE_DOCS': 'OFF',
         # Don't include example build targets to save on cmake cycles
-        'LLVM_INCLUDE_EXAMPLES': 'OFF'
+        'LLVM_INCLUDE_EXAMPLES': 'OFF',
+        # Use the experimental new pass manager
+        'LLVM_USE_NEWPM': 'ON'
     }
     # yapf: enable
 
