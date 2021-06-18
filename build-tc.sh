@@ -13,8 +13,8 @@ rm -rf installTmp
 msg "Building LLVM..."
 ./build-llvm.py \
 	--update \
-	--build-stage1-only \
-	--install-stage1-only \
+	--update-llvm \
+	--update-binutils \
 	--projects "clang;lld;polly" \
 	--targets "ARM;AArch64;X86" \
 	--install-folder "installTmp" \
