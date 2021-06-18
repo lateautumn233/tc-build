@@ -16,6 +16,7 @@ msg "Building LLVM..."
 	--update-llvm \
 	--update-binutils \
     --lto "thin" \
+    --pgo "llvm" \
 	--projects "clang;lld;polly" \
 	--targets "ARM;AArch64;X86" \
 	--install-folder "installTmp" \
