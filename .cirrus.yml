@@ -3,6 +3,7 @@ tc-build_task:
     image: ubuntu:22.04
     cpu: 8
     memory: 32G
+    timeout_in: 120m
     GITHUB_PASSWORD: ENCRYPTED[!46f77dd5bf808981b6709e93f89a5d724d0fb9ba1704e1c61fdd399f3cab7c915379f9fb046841a0115a28fd79fdf299!]
   tc-build_script: |
     ./install.sh
