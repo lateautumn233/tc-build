@@ -1,0 +1,16 @@
+tc-build_task:
+    timeout_in: 120m
+    env:
+      GITHUB_PASSWORD: ENCRYPTED[c73c73b375466028ee92085b596f20b689bd766653bc034484a9bd092c8abe8c9aa509859b277e758e0308b0431def4f]
+    container:
+      image: ubuntu:22.04
+      cpu: 8
+      memory: 32G
+    install_script: |
+      ./install.sh
+      
+    build-tc_script: |
+      ./build-tc.sh
+
+    upload_script: |
+      ./upload-build.sh
