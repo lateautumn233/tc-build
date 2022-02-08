@@ -16,12 +16,12 @@ msg "Building LLVM..."
 	--update-llvm \
 	--update-binutils \
     --lto "thin" \
-    --pgo "llvm" \
+    --pgo "kernel-defconfig" \
 	--projects "clang;lld;polly" \
 	--targets "ARM;AArch64;X86" \
 	--install-folder "installTmp" \
-	--clang-vendor "Kyuofox-$(date +%Y%m%d)" \
-	--additional-build-arguments "CLANG_REPOSITORY_STRING=GitHub.com/KyuoFoxHuyu"
+	--clang-vendor "Lateautumn-$(date +%Y%m%d)" \
+	--additional-build-arguments "CLANG_REPOSITORY_STRING=GitHub.com/lateautumn233"
 
 # Build binutils
 msg "Building binutils..."
