@@ -756,7 +756,14 @@ def slim_cmake_defines():
         # Don't include example build targets to save on cmake cycles
         'LLVM_INCLUDE_EXAMPLES': 'OFF',
         # Use the experimental new pass manager
-        'LLVM_USE_NEWPM': 'ON'
+        'LLVM_USE_NEWPM': 'ON',
+        # Use static build
+#        'LLVM_BUILD_STATIC': 'ON',
+        # Set the default zlib library  
+#        'ZLIB_LIBRARY_RELEASE': '/usr/lib64/libz.a',
+#        'LLVM_ENABLE_PIC': 'OFF',
+#        'LLVM_ENABLE_LIBXML2': 'OFF'
+        
     }
     # yapf: enable
 

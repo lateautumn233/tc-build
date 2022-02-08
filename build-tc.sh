@@ -15,7 +15,6 @@ msg "Building LLVM..."
 	--update \
 	--update-llvm \
 	--update-binutils \
-    --lto "thin" \
     --shallow-clone \
     --pgo "kernel-defconfig" \
 	--projects "clang;lld;polly" \
