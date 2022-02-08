@@ -16,6 +16,7 @@ msg "Building LLVM..."
 	--update-llvm \
 	--update-binutils \
     --lto "thin" \
+    --shallow-clone \
     --pgo "kernel-defconfig" \
 	--projects "clang;lld;polly" \
 	--targets "ARM;AArch64;X86" \
