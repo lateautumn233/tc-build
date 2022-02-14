@@ -13,6 +13,7 @@ short_llvm_commit="$(cut -c-8 <<< $llvm_commit)"
 llvm_commit_url="https://github.com/llvm/llvm-project/commit/$llvm_commit"
 binutils_ver="$(ls | grep "^binutils-" | sed "s/binutils-//g")"
 
+git config --global credential.helper store
 # Update Git repository
 echo "https://lateautumn233:$GITHUB_PASSWORD@github.com" > $HOME/.git-credentials
 
