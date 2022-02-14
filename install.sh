@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 export DEBIAN_FRONTEND=noninteractive
-           apt update -y
-            apt install bc \
+            sudo apt update -y
+            sudo   apt install bc \
             binutils-dev \
             bison \
             build-essential \
@@ -24,4 +24,5 @@ export DEBIAN_FRONTEND=noninteractive
             xz-utils \
             llvm \
             patchelf \
+            git-lfs \
             zlib1g-dev -y
