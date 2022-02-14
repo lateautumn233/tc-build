@@ -7,21 +7,25 @@ clang_version="$(install/bin/clang --version | head -n1 | cut -d' ' -f4)"
 
 # Generate release info
 builder_commit="$(git rev-parse HEAD)"
+pushd llvm-project
 llvm_commit="$(git rev-parse HEAD)"
 short_llvm_commit="$(cut -c-8 <<< $llvm_commit)"
+popd
 
 llvm_commit_url="https://github.com/llvm/llvm-project/commit/$llvm_commit"
 binutils_ver="$(ls | grep "^binutils-" | sed "s/binutils-//g")"
 
 git config --global credential.helper store
 # Update Git repository
-echo "https://lateautumn233:$GITHUB_PASSWORD@github.com" > $HOME/.git-credentials
+echo "https://lateautumn:$GITHUB_PASSWORD@gitea.com" > $HOME/.git-credentials
+git clone "https://gitea.com/lateautumn/LateAutumn-clang" rel_repo
 
-git clone "https://github.com/lateautumn233/LateAutumn-clang"
+pushd rel_repo
 git config --global user.name "lateautumn233" && git config --global user.email 3487467850@qq.com
-cp -rf install/* LateAutumn-clang/
-cd LateAutumn-clang
+cp -r ../install/* .
 # Keep files that aren't part of the toolchain itself
+git lfs track "*.so"
+git add .gitattributes
 git checkout README.md LICENSE
 git add .
 git commit -am "Update to $rel_date build
@@ -30,4 +34,4 @@ LLVM commit: $llvm_commit_url
 binutils version: $binutils_ver
 Builder commit: https://github.com/$GH_BUILD_REPO/commit/$builder_commit"
 git push
-
+popd

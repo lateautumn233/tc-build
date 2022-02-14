@@ -24,4 +24,5 @@ export DEBIAN_FRONTEND=noninteractive
             xz-utils \
             llvm \
             patchelf \
+            git-lfs \
             zlib1g-dev -y
