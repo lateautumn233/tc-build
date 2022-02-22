@@ -23,6 +23,7 @@ git clone "https://gitea.com/lateautumn/LateAutumn-clang" rel_repo
 pushd rel_repo
 git config --global user.name "lateautumn233" && git config --global user.email 3487467850@qq.com
 cp -r ../install/* .
+git config --global http.postBuffer 157286400
 # Keep files that aren't part of the toolchain itself
 git lfs track "*.so"
 git add .gitattributes
