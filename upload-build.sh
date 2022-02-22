@@ -33,5 +33,6 @@ git commit -am "Update to $rel_date build
 LLVM commit: $llvm_commit_url
 binutils version: $binutils_ver
 Builder commit: https://github.com/$GH_BUILD_REPO/commit/$builder_commit"
+git lfs push
 git push
 popd
