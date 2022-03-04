@@ -35,5 +35,5 @@ LLVM commit: $llvm_commit_url
 binutils version: $binutils_ver
 Builder commit: https://github.com/$GH_BUILD_REPO/commit/$builder_commit"
 git lfs push origin main
-git push
+until git push ; do sleep 2 ; done ; echo succeed
 popd
