@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
-
 # Generate build info
 rel_date="$(date "+%Y%m%d")" # ISO 8601 format
 rel_friendly_date="$(date "+%B %-d, %Y")" # "Month day, year" format
